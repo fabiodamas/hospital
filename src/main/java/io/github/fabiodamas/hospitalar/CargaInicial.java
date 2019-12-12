@@ -6,7 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import io.github.fabiodamas.hospitalar.model.entity.Usuario;
-import io.github.fabiodamas.hospitalar.repository.UsuarioRepository;
+import io.github.fabiodamas.hospitalar.model.repository.UsuarioRepository;
 
 @Component
 public class CargaInicial implements ApplicationRunner  {
