@@ -1,17 +1,24 @@
 package io.github.fabiodamas.hospitalar;
-
-import org.springframework.beans.factory.annotation.Autowired;
+/* 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import io.github.fabiodamas.hospitalar.model.entity.Usuario;
 import io.github.fabiodamas.hospitalar.model.repository.UsuarioRepository;
+
+
 
 @Component
 public class CargaInicial implements ApplicationRunner  {
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	// @Autowired
+	// private UsuarioRepository usuarioRepository;
+	// private GroupRepository repository;
+
+	public CargaInicial(UsuarioRepository usuarioRepository) {
+	// public CargaInicial(GroupRepository repository) {
+		// this.usuarioRepository = usuarioRepository;
+		// this.repository = repository;
+	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -21,8 +28,24 @@ public class CargaInicial implements ApplicationRunner  {
 		
 		usuarioRepository.saveAndFlush(fabio);
 		usuarioRepository.saveAndFlush(ludmila);
-		
+
+		Stream.of("Denver JUG", "Utah JUG", "Seattle JUG",
+				"Richmond JUG").forEach(name ->	repository.save(new Group(name))
+		);
+
+		Group djug = repository.findByName("Denver JUG");
+		Event e = Event.builder().title("Full Stack Reactive")
+				.description("Reactive with Spring Boot + React")
+				.date(Instant.parse("2018-12-12T18:00:00.000Z"))
+				.build();
+		djug.setEvents(Collections.singleton(e));
+		repository.save(djug);
+
+		repository.findAll().forEach(System.out::println);
+
 	}
 	
 	
 }
+
+*/
